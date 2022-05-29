@@ -7,7 +7,7 @@ pairsfound = 0;
 function gamelogic() {
     $(".card").on("click", function () {
         if (lockboard) return;
-        if (this == firstcard) return;
+        if (this == firstCard) return;
         if (!this.classList.contains("flip")) {
             $(this).toggleClass("flip")
         } if (!hasFlippedCard) {
@@ -53,6 +53,6 @@ function unflipCards() {
     setTimeout(() => {
         $(`#${firstCard.id}`).parent().removeClass("flip")
         $(`#${secondCard.id}`).parent().removeClass("flip")
-        resetBoard();
+        resetboard();
     }, 1000);
 }

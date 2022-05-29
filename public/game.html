@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -58,7 +59,7 @@
             padding-top: 20%;
         }
 
-        #game_grid{
+        #game_grid {
             /* border: 2px solid tomato; */
             display: flex;
             flex-direction: column;
@@ -76,11 +77,11 @@
         .ggrid {
             display: flex;
             flex-direction: row;
-            justify-content: space-around;
+            /* justify-content: space-around; */
             /* height: 100px; */
         }
 
-        .card{
+        .card {
             width: calc(20%);
             height: 200px;
             position: relative;
@@ -94,33 +95,34 @@
             transition: transform .2s;
         }
 
-        .card.flip{
+        .card.flip {
             transform: rotateY(180deg);
         }
 
-        img{
+        img {
             width: 100px;
             height: 125px;
         }
 
-        .front_face, .back_face{
+        .front_face,
+        .back_face {
             position: absolute;
             width: 100%;
-            height:100%;
+            height: 100%;
             backface-visibility: hidden;
         }
 
-        .flip{
+        .flip {
             transform: rotateY(180deg);
         }
 
-        .front_face{
+        .front_face {
             transform: rotateY(180deg);
         }
 
         main {
-                padding-top: 50px;
-                padding-bottom: 50px;
+            padding-top: 50px;
+            padding-bottom: 50px;
         }
 
         #show {
@@ -156,7 +158,7 @@
             }
 
             .select {
-                    padding-top: 4%;
+                padding-top: 4%;
             }
 
             .start {
@@ -167,9 +169,9 @@
             }
 
         }
-
     </style>
 </head>
+
 <body>
     <h1>
         Matching Game
@@ -218,12 +220,14 @@
         </div>
         <div id="startb">
             <div class="start">
-                <button onclick = "startgame()" class="button" >Start the game!</button>
+                <button onclick="gamestart()" class="button">Start the game!</button>
             </div>
         </div>
     </nav>
     <br>
-    <div id="timbox"><div id="timer">Timer</div></div>
+    <div id="timbox">
+        <div id="timer">Timer</div>
+    </div>
     <br>
     <main>
         <div id="show">Let's play a game!</div>
@@ -231,5 +235,7 @@
     </main>
 </body>
 <script src="/game.js"></script>
+<script src="/code1.js"></script>
 <!-- <script src="/code.js"></script> -->
+
 </html>

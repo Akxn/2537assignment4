@@ -13,26 +13,27 @@ width = 0;
 randomnumber = 0;
 function processPokeResp(data) {
     to_add += `
-    <div class="card" onclick="setup1()">
+    <div class="card" onclick="gamelogic()">
         <img id="img${loop}" class="front_face" src="${data.sprites.other["official-artwork"].front_default}" alt="">
-        <img  class="back_face" src="../images/back.png" alt="">
+        <img  class="back_face" src="/images/back.png" alt="">
     </div>`
 }
 
-pokemonnumber = 'max'
+pokenum = 'max'
 list = []
+
 function listnumber() {
     numreq = a * b / 2
     number = 0
-    if (pokemonnumber = 'max') {
+    if (pokenum = 'max') {
         number = numreq
     } else {
-        nubmer = parseInt(pokemonnumber);
+        numberer = parseInt(pokenum);
     }
 
     for (o = 1; o <= number; o++) {
         randomnumber = Math.floor(Math.random() * 898)
-        listnumber.push(randomnumber);
+        list.push(randomnumber);
     }
     repcardnum = numreq - number
     if (repcardnum > 0) {
@@ -46,15 +47,15 @@ function listnumber() {
     }
 }
 
-function shuffle(list1) {
-    var array = list1;
-    var l = array.length,
-        j, k;
-    while (l) {
-        j = Math.floor(Math.random() * l--);
-        k = array[l]
-        array[l] = array[j];
-        array[j] = k;
+function shuffle(list_) {
+    var array = list_;
+    var m = array.length,
+    t, i;
+    while (m) {
+        i = Math.floor(Math.random() * m--);
+        t = array[m];
+        array[m] = array[i];
+        array[i] = t;
     }
     return array;
 }
@@ -75,7 +76,7 @@ async function loadcards() {
         }
         await $.ajax({
             type: "get",
-            url: `https://pokeapi.co/api/v2/pokemon/${array[i - 1]}`,
+            url: `https://pokeapi.co/api/v2/pokemon/${array[i-1]}`,
             success: processPokeResp
         })
         console.log(i);
@@ -89,12 +90,13 @@ async function loadcards() {
         console.log(i);
     }
 
+    // $("#main").html(to_add);
     jQuery("main").html(to_add)
 }
 
 function setgame() {
     $.ajax({
-        url: `http://localhost:5000/game/insert/${grid}/${level}/${pokemonnum}/${result}/${formatted}`,
+        url: `http://localhost:5000/game/insert/${grid}/${level}/${pokenum}/${result}/${formatted}`,
         type: "put",
         success: (res) => {
             console.log(res)

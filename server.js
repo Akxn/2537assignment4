@@ -428,6 +428,35 @@ app.get('/adminlogin/:username/:password', function(req, res) {
     })
 })
 
+app.put('/game/insert/:grid/:level/:pokenum/:result/:time', function (req, res) {
+    if(req.session.authenticated) {
+        accountModel.updateOne({
+                user: req.session.user,
+                pass: req.session.pass
+            }, {
+                $push: {
+                    game: {
+                        grid: req.params.grid,
+                        level: req.params.level,
+                        pokenum: req.params.pokenum,
+                        result: req.params.result,
+                        time: req.params.time
+                    }
+                }
+            },
+            function (err, data) {
+                if (err) {
+                    console.log("Error " + err);
+                } else {
+                    console.log("Data " + data);
+                }
+                res.send("Game insertion is successful!");
+            });
+    } else {
+        res.send(null);
+    }
+})
+
 app.get('/pokemon/:name', (req, res) => {
     let query = isNaN(req.params.name) ? { name: req.params.name } : { id: req.params.name };
     pokemonModel.find(query, (err, body) => {
