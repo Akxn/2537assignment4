@@ -56,7 +56,7 @@ const timelineSchema = new mongoose.Schema({
 });
 
 const userSchema = new mongoose.Schema({
-    // admin: Boolean,
+    admin: Boolean,
     username: String,
     password: String,
     firstname: String,
