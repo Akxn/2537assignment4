@@ -5,28 +5,29 @@ secondCard = undefined;
 pairsfound = 0;
 
 function gamelogic() {
+
+    // loadCards();
     $(".card").on("click", function () {
-        if (lockboard) return;
-        if (this == firstCard) return;
-        if (!this.classList.contains("flip")) {
-            $(this).toggleClass("flip")
-        } if (!hasFlippedCard) {
+        if(lockboard) return;
+        if(this == firstCard) return;
+        if(!this.classList.contains("flip")){
+        $(this).toggleClass("flip")
+
+        if (!hasFlippedCard) {
             firstCard = $(this).find('.front_face')[0]
             hasFlippedCard = true;
         } else {
+            // 2nd card
             secondCard = $(this).find('.front_face')[0]
             console.log(firstCard, secondCard);
             hasFlippedCard = false;
             checkForMatch();
         }
-    })
-}
+}})
 
 function checkForMatch() {
-    if (
-        $(`#${firstCard.id}`).attr("src") ==
-        $(`#${secondCard.id}`).attr("src")
-    ) {
+    if ($(`#${firstCard.id}`).attr("src") ==
+        $(`#${secondCard.id}`).attr("src")) {
         console.log("A Match!");
         pairsFound++;
         disableCards();
@@ -49,10 +50,13 @@ function disableCards() {
 }
 
 function unflipCards() {
-    lockBoard = true;
+    lockboard = true;
     setTimeout(() => {
         $(`#${firstCard.id}`).parent().removeClass("flip")
         $(`#${secondCard.id}`).parent().removeClass("flip")
         resetboard();
     }, 1000);
 }
+}
+
+$(document).ready(gamelogic);

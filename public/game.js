@@ -15,7 +15,7 @@ function processPokeResp(data) {
     to_add += `
     <div class="card" onclick="gamelogic()">
         <img id="img${loop}" class="front_face" src="${data.sprites.other["official-artwork"].front_default}" alt="">
-        <img  class="back_face" src="/images/back.png" alt="">
+        <img  class="back_face" src="/back.png" alt="">
     </div>`
 }
 
@@ -112,7 +112,8 @@ function display(type_) {
         b = 2;
         loadcards();
     } else if (type_ == "medium") {
-        a, b = 4;
+        a = 4;
+        b = 4;
         loadcards();
     } else {
         a = 6;
