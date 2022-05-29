@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poke Poke</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        body,
+        html {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            float: center;
+        }
+
+        a {
+            margin: 1em;
+            color: white;
+            text-decoration: none;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: larger;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        .register {
+            border: solid;
+            width: 250px;
+            height: 250px;
+        }
+        #username-field{
+            margin-top: 50px;
+        }
+        #password-field{
+            margin-top: 10px;
+        }
+        #name-field{
+            margin-top: 10px;
+        }
+        #signup-button{
+            margin-top: 20px;
+            padding: 10px 10px;
+            width: 100px;
+            align-items: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="register">
+            <div>Create an account</div>
+            <form id="signup-form">
+                <div id="username-field">
+                    <input type="text" placeholder="username" id="username-text-field">
+                </div>
+                <div id="password-field">
+                    <input type="password" placeholder="Password" id="password-text-field">
+                </div>
+                <div id="first-name-field">
+                    <input type="text" placeholder="First Name" id="first-name-field">
+                </div>
+                <div id="last-name-field">
+                    <input type="text" placeholder="Last Name" id="last-name-field">
+                </div>
+                <div id="age-field">
+                    <input type="text" placeholder="Age" id="age-text-field">
+                </div>
+                <input type="button" id="signup-button" value="Sign Up">
+            </form>
+        </div>
+    </main>
+</body>
+<script type="text/javascript" src="newacc.js"></script>
+
+</html>
