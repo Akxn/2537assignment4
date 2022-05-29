@@ -1,3 +1,6 @@
+$("#back").click(function () {
+    window.location.href = 'http://localhost:5000/index.html';
+})
 a = 0;
 b = 0;
 to_add = '';
