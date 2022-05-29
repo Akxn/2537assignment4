@@ -72,7 +72,7 @@ function processaddpokemon(data) {
 
 
 function setup() {
-    $("body").on("click", ".cart", addcart)
+    $("body").on("click", ".cart", addtocart)
     // $("main").on("click", ".cart", addtocart)
     loadNineImages();
     // $('main').on('click', )
