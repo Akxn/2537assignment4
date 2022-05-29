@@ -85,6 +85,12 @@ const cartSchema = new mongoose.Schema({
     timelines:[]
 })
 
+const adminSchema = new mongoose.Schema({
+    username: String,
+    password: String,
+});
+
+const adminModel = new mongoose.model("admin", adminSchema);
 const cartModel = new mongoose.model("cart", cartSchema);
 const pokemonModel = mongoose.model('pokemon', pokemonSchema);
 const typeModel = mongoose.model('ability', typeSchema);
@@ -234,6 +240,14 @@ app.get('/login', (req, res) => {
 
 app.get('/newacc', (req, res) => {
     res.render("newacc.ejs")
+})
+
+app.get('/game', function (req, res) {
+    if(req.session.authenticated)
+    res.sendFile(__dirname + "/public/game.html")
+    else {
+        res.send(null);
+    }
 })
 
 app.post('/login', (req, res) => {
@@ -396,6 +410,22 @@ app.get('/logout', (req, res) => {
         });
     });
     // res.render('login.ejs');
+})
+
+app.get('/adminlogin/:username/:password', function(req, res) {
+    adminModel.findOne({username: req.params.username, password: req.params.passowrd}, function(err,data){
+        if(err) {
+            console.log("error"+ err);
+        } else{
+            console.log("data"+ data);
+        }
+        if(data) {
+            req.session.authenticated = true;
+            req.session.username = req.params.username;
+            req.session.password = req.params.password;
+        }
+        res.send(data);
+    })
 })
 
 app.get('/pokemon/:name', (req, res) => {

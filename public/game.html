@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: rgb(255, 255, 255);
+            font-family: 'comicsan', serif;
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 5px;
+        }
+
+        h1 {
+            display: flex;
+            justify-content: center;
+            padding-top: 10px;
+        }
+
+        .button {
+            background: none;
+            text-decoration: none;
+            color: black;
+            box-shadow: 0px 0px 0px 2px rgb(156, 224, 231);
+            border-radius: 3px;
+            padding: 5px 2em;
+            transition: 0.5s;
+        }
+
+        .button:hover {
+            background: gray;
+            color: white;
+            transition: 0.5s;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-around;
+            background-color: #92a8d1;
+            /* padding: 14px 5px; */
+        }
+
+        .tog {
+            display: flex;
+            flex-direction: row;
+            /* justify-content: center; */
+        }
+
+        .select {
+            padding-top: 11%;
+        }
+
+        .start {
+            padding-top: 20%;
+        }
+
+        #game_grid{
+            /* border: 2px solid tomato; */
+            display: flex;
+            flex-direction: column;
+            /* height: 800px; */
+            /* width: 800px;
+            height: 800px;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap; */
+            /* flex-direction: row; */
+            gap: 10px;
+            perspective: 1000px;
+        }
+
+        .ggrid {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            /* height: 100px; */
+        }
+
+        .card{
+            width: calc(20%);
+            height: 200px;
+            position: relative;
+            transition: transform .5s;
+            transform-style: preserve-3d;
+            transform: scale(1);
+        }
+
+        .card:active {
+            transform: scale(.97);
+            transition: transform .2s;
+        }
+
+        .card.flip{
+            transform: rotateY(180deg);
+        }
+
+        img{
+            width: 100px;
+            height: 125px;
+        }
+
+        .front_face, .back_face{
+            position: absolute;
+            width: 100%;
+            height:100%;
+            backface-visibility: hidden;
+        }
+
+        .flip{
+            transform: rotateY(180deg);
+        }
+
+        .front_face{
+            transform: rotateY(180deg);
+        }
+
+        main {
+                padding-top: 50px;
+                padding-bottom: 50px;
+        }
+
+        #show {
+            display: flex;
+            justify-content: center;
+            font-size: xx-large;
+            color: #487881;
+        }
+
+
+
+        @media screen and (max-width: 900px) and (min-width: 700px) {
+            .card {
+                height: 150px;
+            }
+        }
+
+        @media screen and (max-width: 700px) {
+            .card {
+                height: 100px;
+            }
+
+            nav {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            .tog {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+            }
+
+            .select {
+                    padding-top: 4%;
+            }
+
+            .start {
+                padding-top: 0%;
+                padding-bottom: 2%;
+                display: flex;
+                justify-content: center;
+            }
+
+        }
+
+    </style>
+</head>
+<body>
+    <h1>
+        Matching Game
+    </h1>
+    <div id="navtop">
+        <div><button class="btn button" id="back"><span class="material-icons">Back to main page</span></button></div>
+        <div></div>
+    </div>
+    <br>
+    <nav>
+        <div class="tog">
+            <div>
+                <h4>Select a Game Grid: </h4>
+            </div>
+            <div class="select">
+                <select name="grid_type" id="grid_type">
+                    <option value="low">2 x 4</option>
+                    <option value="mid">4 x 4</option>
+                    <option value="high">4 x 6</option>
+                </select>
+            </div>
+        </div>
+        <div class="tog">
+            <div>
+                <h4>Select a Level: </h4>
+            </div>
+            <div class="select">
+                <select name="level_type" id="level_type">
+                    <option value="easy">easy</option>
+                    <option value="medium">medium</option>
+                    <option value="hard">hard</option>
+                </select>
+            </div>
+        </div>
+        <div class="tog">
+            <div>
+                <h4>Choose Pokemon please:</h4>
+            </div>
+            <div class="select">
+                <select name="level_type" id="pokenum_type">
+                    <option value="max">max</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </div>
+        </div>
+        <div id="startb">
+            <div class="start">
+                <button onclick = "startgame()" class="button" >Start!</button>
+            </div>
+        </div>
+    </nav>
+    <br>
+    <div id="timbox"><div id="timer">Timer</div></div>
+    <br>
+    <main>
+        <div id="show">Let's play a game!</div>
+
+    </main>
+</body>
+</html>
