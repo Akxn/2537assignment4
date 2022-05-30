@@ -430,9 +430,9 @@ app.get('/adminlogin/:username/:password', function(req, res) {
 
 app.put('/game/insert/:grid/:level/:pokenum/:result/:time', function (req, res) {
     if(req.session.authenticated) {
-        accountModel.updateOne({
-                user: req.session.user,
-                pass: req.session.pass
+        userModel.updateOne({
+                user: req.session.username,
+                pass: req.session.password
             }, {
                 $push: {
                     game: {
