@@ -730,4 +730,13 @@ app.get('/cart/getAllEvents', function (req, res) {
     });
 })
 
+app.get('/getusers', async(req,res) => {
+    const userlist = await userModel.find({})
+    res.send(userlist);
+})
+
+app.get('/dashboard', async(req,res) =>{
+    res.render("dashboard.ejs")
+})
+
 app.use(express.static('public'));
